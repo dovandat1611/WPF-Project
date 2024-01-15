@@ -32,7 +32,7 @@ Welcome to **WPF Project**, a web application that provides a seamless experienc
 - Enter your credentials.
 - Click the login button.
 - You will be redirected to the home page upon successful login.
-  ![Uploading Screenshot 2024-01-15 082524.png…]()
+  ![Screenshot 2024-01-15 082524](https://github.com/dovandat1611/WPF-Project/assets/141027425/18de0fb8-1d19-4f6c-b08b-6d016a123964)
 
 ### Register
 - Access the registration page.
