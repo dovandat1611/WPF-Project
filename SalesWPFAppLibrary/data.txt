@@ -1,0 +1,93 @@
+DROP DATABASE IF EXISTS SalesWPFApp;
+
+CREATE DATABASE SalesWPFApp;
+
+USE SalesWPFApp;
+
+-- Create Members table
+CREATE TABLE Members (
+    MemberId INT PRIMARY KEY IDENTITY,
+    FullName NVARCHAR(255) NOT NULL,
+    Email VARCHAR(100) NOT NULL,
+    DOB DATE,
+    Address NVARCHAR(255),
+    Gender BIT, -- Change data type to BIT
+    Password NVARCHAR(30) NOT NULL,
+    Status BIT
+);
+
+-- Create Order table
+CREATE TABLE [Order] (
+    OrderId INT PRIMARY KEY IDENTITY,
+    MemberId INT,
+    OrderDate DATETIME,
+    ShippedDate DATETIME,
+    TotalPrice MONEY,
+    Status VARCHAR(20),
+    CONSTRAINT FK_Order_Members FOREIGN KEY (MemberId) REFERENCES Members(MemberId)
+);
+
+-- Create Category table
+CREATE TABLE Category (
+    CategoryId INT PRIMARY KEY IDENTITY,
+    CategoryName NVARCHAR(255)
+);
+
+-- Create Product table
+CREATE TABLE Product (
+    ProductId INT PRIMARY KEY IDENTITY,
+    CategoryId INT,
+    ProductName NVARCHAR(255),
+    UnitPrice MONEY,
+    Status VARCHAR(20),
+    CONSTRAINT FK_Product_Category FOREIGN KEY (CategoryId) REFERENCES Category(CategoryId)
+);
+
+-- Create OrderDetail table
+CREATE TABLE OrderDetail (
+    OrderDetailId INT PRIMARY KEY IDENTITY,
+    OrderId INT,
+    ProductId INT,
+    UnitPrice MONEY NOT NULL,
+    Quantity INT NOT NULL,
+    CONSTRAINT FK_OrderDetail_Order FOREIGN KEY (OrderId) REFERENCES [Order](OrderId),
+    CONSTRAINT FK_OrderDetail_Product FOREIGN KEY (ProductId) REFERENCES Product(ProductId)
+);
+
+-- Add data to Members table
+INSERT INTO Members (FullName, Email, DOB, Address, Gender, Password, Status)
+VALUES
+('John Doe', 'john.doe@example.com', '1990-01-01', '123 Main St', 1, 'password123', 1), -- 1 represents Male
+('Jane Smith', 'jane.smith@example.com', '1985-05-15', '456 Oak St', 0, 'pass456', 0); -- 0 represents Female
+-- Add more data as needed
+
+-- Add data to Category table
+INSERT INTO Category (CategoryName)
+VALUES
+    ('Electronics'),
+    ('Clothing'),
+    ('Home Appliances');
+-- Add more data as needed
+
+-- Add data to Product table
+INSERT INTO Product (CategoryId, ProductName, UnitPrice, Status)
+VALUES
+    (1, N'Laptop', 999.99, 'Available'),
+    (2, N'T-Shirt', 19.99, 'Available'),
+    (3, N'Coffee Maker', 49.99, 'Out of Stock');
+-- Add more data as needed
+
+-- Add data to Order table
+INSERT INTO [Order] (MemberId, OrderDate, ShippedDate, TotalPrice, Status)
+VALUES
+    (1, '2024-01-08', '2024-01-10', 120.50, 'Shipped'),
+    (2, '2024-01-09', '2024-01-11', 45.99, 'Processing');
+-- Add more data as needed
+
+-- Add data to OrderDetail table
+INSERT INTO OrderDetail (OrderId, ProductId, UnitPrice, Quantity)
+VALUES
+    (1, 1, 999.99, 2),
+    (1, 2, 19.99, 3),
+    (2, 3, 49.99, 1);
+-- Add more data as needed

@@ -1,0 +1,123 @@
+﻿<Window x:Class="SalesWPFApp.RegisterWindown"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:SalesWPFApp"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        FontSize="18" FontFamily="{DynamicResource MaterialDesignFont}" ResizeMode="NoResize"
+        WindowStartupLocation="CenterScreen" WindowStyle="None" AllowsTransparency="True" Background="Transparent" 
+        mc:Ignorable="d" Height="700" Width="875">
+
+    <Window.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <materialDesign:BundledTheme BaseTheme="Light" PrimaryColor="Teal" SecondaryColor="Lime" />
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Defaults.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Window.Resources>
+
+    <Grid Margin="20">
+        <Grid.Effect>
+            <DropShadowEffect BlurRadius="30" ShadowDepth="1" Opacity="0.4"/>
+        </Grid.Effect>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="1.22*"/>
+        </Grid.ColumnDefinitions>
+
+        <!--Left Section-->
+        <Border Background="#07BF96" CornerRadius="10 0 0 10" ClipToBounds="True">
+            <Grid>
+                <!--Title-->
+                <StackPanel Margin="0 50 0 0" VerticalAlignment="Top">
+                    <TextBlock Text="Account" FontSize="46" FontWeight="Light" Foreground="#ffffff" TextAlignment="Center"/>
+                    <TextBlock Text="to use all features" FontWeight="Light" FontSize="16" Foreground="#D1F2EB" TextAlignment="Center" Margin="0 15 0 3"/>
+                    <TextBlock Text="of the application" FontWeight="Light" FontSize="16" Foreground="#D1F2EB" TextAlignment="Center"/>
+                </StackPanel>
+                <StackPanel VerticalAlignment="Center" Margin="75 0">
+
+                    <!-- Email -->
+                    <StackPanel Margin="0 27 0 0">
+                        <TextBox Name="Email" BorderThickness="0 0 0 1.5" BorderBrush="#C5C8CC" materialDesign:HintAssist.FloatingOffset="0,-20" materialDesign:HintAssist.Hint="Email"  Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
+                    </StackPanel>
+
+                    <!-- Password -->
+                    <StackPanel Margin="0 27 0 0">
+                        <PasswordBox Name="pbPassword" BorderThickness="0 0 0 1.5" BorderBrush="#C5C8CC" materialDesign:HintAssist.Hint="Password" materialDesign:HintAssist.FloatingOffset="0,-18" Style="{StaticResource MaterialDesignFloatingHintPasswordBox}" />
+                    </StackPanel>
+
+                    <!-- Repeat Password -->
+                    <StackPanel Margin="0 27 0 0">
+                        <PasswordBox Name="pbRePassword" BorderThickness="0 0 0 1.5" BorderBrush="#C5C8CC" materialDesign:HintAssist.Hint="RePassword" materialDesign:HintAssist.FloatingOffset="0,-18" Style="{StaticResource MaterialDesignFloatingHintPasswordBox}" />
+                    </StackPanel>
+
+
+                </StackPanel>
+                <!--Ellipses-->
+                <Ellipse Width="500" Height="500" VerticalAlignment="Bottom" Fill="#5ECCB4" Margin="75,0,-199,-286" Opacity="0.6"/>
+                <Ellipse Width="300" Height="300" VerticalAlignment="Bottom" Fill="#5BCBB3" Margin="-257,0,333,80" Opacity="0.3"/>
+                <Ellipse Width="400" Height="400" VerticalAlignment="Bottom" Fill="#5ECCB4" Margin="-212,0,188,-195" Opacity="0.3"/>
+                <Ellipse Width="250" Height="250" VerticalAlignment="Bottom" Fill="#5BC9B2" Margin="-380 0 0 -120"/>
+                <Ellipse Width="400" Height="400" VerticalAlignment="Bottom" Fill="#5ECCB4" Margin="274,0,-298,-120" Opacity="0.8"/>
+            </Grid>
+        </Border>
+
+        <!--Right Section-->
+        <Border Grid.Column="1" Background="#ffffff" CornerRadius="0 10 10 0" MouseDown="Border_MouseDown">
+            <Grid>
+                <!--Close Icon-->
+                <StackPanel Margin="0 50 0 0" VerticalAlignment="Top">
+                    <TextBlock Text="Sign up" FontSize="46" FontWeight="Light" Foreground="#07BF96" TextAlignment="Center"/>
+                    <TextBlock Text="to use all features" FontWeight="Light" FontSize="16" Foreground="#07BF96" TextAlignment="Center" Margin="0 15 0 3"/>
+                    <TextBlock Text="of the application" FontWeight="Light" FontSize="16" Foreground="#07BF96" TextAlignment="Center"/>
+                </StackPanel>
+                <!--Inputs-->
+                <StackPanel VerticalAlignment="Top" Margin="75,201,75,0">
+
+                    <!-- Name -->
+                    <StackPanel Margin="0 27 0 0">
+                        <TextBox Name="Name" BorderThickness="0 0 0 1.5" BorderBrush="#C5C8CC" materialDesign:HintAssist.FloatingOffset="0,-20" materialDesign:HintAssist.Hint="Full Name" Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
+                    </StackPanel>
+
+                    <!-- Address -->
+                    <StackPanel Margin="0 0 0 0">
+                        <TextBox Name="Address" BorderThickness="0 0 0 1.5" BorderBrush="#C5C8CC" materialDesign:HintAssist.FloatingOffset="0,-20" materialDesign:HintAssist.Hint="Address"  Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
+                    </StackPanel>
+
+                    <!-- Gender -->
+                    <GroupBox Header="Gender" Foreground="#616161" Margin="0 27 0 0">
+                        <StackPanel>
+                            <StackPanel Orientation="Horizontal">
+                                <RadioButton Content="Male" GroupName="Gender" Name="Male"/>
+                                <RadioButton Margin="100,0,0,0" Content="Female" Name="Female" GroupName="Gender"  />
+                            </StackPanel>
+                        </StackPanel>
+                    </GroupBox>
+
+                    <!-- DOB -->
+                    <StackPanel Margin="0 27 0 0">
+                        <DatePicker Name="DOB" materialDesign:HintAssist.Hint="Date of birth" BorderThickness="0 0 0 1.5" BorderBrush="#C5C8CC"/>
+                    </StackPanel>
+
+
+                    <!-- Terms and Conditions -->
+                    <CheckBox Margin="0 40 0 20" FontSize="13">
+                        <TextBlock>
+                        <Run Foreground="#b6b6b6">By signing up I agree with</Run>
+                        <Run Foreground="#07BF96">terms and conditions</Run>
+                        </TextBlock>
+                    </CheckBox>
+
+                    <!-- Sign up and Login Buttons -->
+                    <StackPanel Orientation="Horizontal">
+                        <Button Content="Sign up" Background="#05B790" Name="SignUp" Click="SignUp_Click" Foreground="#ffffff" FontSize="18" materialDesign:ButtonAssist.CornerRadius="22" Height="45" Width="120"/>
+                        <Button Content="or Login" materialDesign:ButtonAssist.CornerRadius="22" Name="Login" Click="Login_Click" FontSize="16" Height="45" Width="120" Margin="5 0 0 0" Style="{StaticResource MaterialDesignFlatButton}"/>
+                    </StackPanel>
+                </StackPanel>
+            </Grid>
+        </Border>
+    </Grid>
+</Window>

@@ -1,0 +1,310 @@
+﻿<Window x:Class="SalesWPFApp.MemberWindown"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:SalesWPFApp"
+        mc:Ignorable="d"
+        xmlns:Icon="http://metro.mahapps.com/winfx/xaml/iconpacks"
+        Height="720" Width="1480" WindowStartupLocation="CenterScreen" AllowsTransparency="True"
+        Background="Transparent" WindowStyle="None">
+
+    <Window.Resources>
+        <BooleanToVisibilityConverter x:Key="BoolToVis" />
+    </Window.Resources>
+
+    <Border CornerRadius="30" Background="#EFF2F7">
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="200"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="400"/>
+            </Grid.ColumnDefinitions>
+
+            <!--Left Menu-->
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+
+                <!--Menu Icon-->
+                <Button Style="{StaticResource topButton}" HorizontalAlignment="Left" Margin="20 15 0 35">
+                </Button>
+
+                <Border Grid.Row="1" Background="#623ED0" CornerRadius="0 50 0 30">
+                    <DockPanel>
+                        <!--Menu Logo-->
+                        <Border Width="80" Height="80" Padding="3" Background="White" CornerRadius="100" DockPanel.Dock="Top" HorizontalAlignment="Left" Margin="20 -30 0 0">
+                            <Ellipse>
+                                <Ellipse.Fill>
+                                    <ImageBrush ImageSource="C:\Users\Lenovo\Documents\C#\PRN221\Assignment\Ass01Solution\SalesWPFApp\Images\avtgithub.jpg"/>
+                                </Ellipse.Fill>
+                            </Ellipse>
+                        </Border>
+
+                        <!--Menu Titles-->
+                        <Button Style="{StaticResource addButton}" 
+                                DockPanel.Dock="Top" 
+                                Width="100"
+                                Height="25"
+                                HorizontalAlignment="Left" Margin="15,5,0,0" Background="#7B5CD6" Foreground="White" 
+                                Name="Profile" Click="Profile_Click">
+                            Profile
+                        </Button>
+                        <TextBlock Text="Sales WPF App" Foreground="White" FontSize="22" FontWeight="SemiBold" DockPanel.Dock="Top" Margin="5 5 0 10" TextAlignment="Center"/>
+                        <TextBlock Text="Admin, HaNoi" Foreground="#D0BFFF" FontSize="14" FontWeight="SemiBold" DockPanel.Dock="Top" TextAlignment="Center"/>
+
+                        <!--Menu Seprator-->
+                        <Separator Margin="25" Background="#7E5FDC" DockPanel.Dock="Top" Height="0.8"/>
+
+                        <!--Menu Buttons-->
+                        <StackPanel DockPanel.Dock="Top" >
+                            <Button Style="{StaticResource menuButton}" Background="#7B5CD6" Foreground="White" Name="MemberPage" Click="MemberPage_Click">
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Text="Members"/>
+                                </StackPanel>
+                            </Button>
+
+                            <Button Style="{StaticResource menuButton}" Name="ProductPage" Click="ProductPage_Click">
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Text="Product"/>
+                                </StackPanel>
+                            </Button>
+
+                            <Button Style="{StaticResource menuButton}" Name="OrderPage" Click="OrderPage_Click">
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Text="Orders"/>
+                                </StackPanel>
+                            </Button>
+
+                        </StackPanel>
+
+                        <Button Style="{StaticResource menuButton}" VerticalAlignment="Bottom" DockPanel.Dock="Bottom" Name="Logout" Click="Logout_Click"  Margin="15 0 15 20">
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock Text="Logout"/>
+                            </StackPanel>
+                        </Button>
+
+                    </DockPanel>
+                </Border>
+
+            </Grid>
+
+            <!--Main Section-->
+            <Grid Grid.Column="1" Margin="30 20 20 20">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="auto"/>
+                </Grid.RowDefinitions>
+
+
+                <!--Page Title-->
+                <TextBlock Text="Members" Grid.Row="1" FontSize="32" FontWeight="SemiBold" Margin="0 20 0 0" Foreground="#121518" HorizontalAlignment="Left"/>
+
+                <!--Add Button-->
+                <Button Style="{StaticResource addButton}">
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="MEMBERS TABLE" FontWeight="Bold"/>
+                    </StackPanel>
+                </Button>
+
+                <!--Seprator-->
+                <Separator Height="1" Grid.Row="3" Background="#DAE2EA" Margin="0 -1 0 10"/>
+
+                <!--Tab buttons-->
+                <StackPanel Grid.Row="2" Orientation="Horizontal" Margin="0 10 0 0">
+                    <!--<Button Style="{StaticResource tabButton}" Content="Club staff" BorderBrush="#784FF2"/>
+                    <Button Style="{StaticResource tabButton}" Content="Players"/>
+                    <Button Style="{StaticResource tabButton}" Content="Archived"/>-->
+                </StackPanel>
+
+                <!--Counter Title-->
+                <TextBlock Name="Ghi" Grid.Row="4" FontSize="18" FontWeight="SemiBold" Foreground="#121518" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+
+                <TextBlock Text="Search By Email" Grid.Row="4" FontSize="13" FontWeight="SemiBold" Margin="0 0 215 0" Foreground="#121518" HorizontalAlignment="Right" VerticalAlignment="Center"/>
+
+                <!--Filter Textbox-->
+                <Grid Width="200" HorizontalAlignment="Right" Grid.Row="4">
+                    <TextBlock Margin="15 0" VerticalAlignment="Center" Foreground="#B0B9C6" IsHitTestVisible="False"
+                           Panel.ZIndex="1" Text="Search in Members ..."
+                           Visibility="{Binding ElementName=textBoxFilter, Converter={StaticResource BoolToVis}}" />
+
+                    <TextBox Name="textBoxFilter" TextChanged="TextBoxFilter_TextChanged" Style="{StaticResource filterTextBox}"/>
+                </Grid>
+
+                <!--Members Data Grid-->
+                <DataGrid RowStyle="{DynamicResource DataGridRowStyle1}" ColumnHeaderStyle="{DynamicResource DataGridColumnHeaderStyle1}" CellStyle="{DynamicResource DataGridCellStyle1}" x:Name="DataGrid" Style="{DynamicResource DataGridStyle1}" >
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="#" IsReadOnly="True" CanUserResize="False" Width="auto" Binding="{Binding MemberId}"/>
+                        <DataGridTextColumn Header="Full Name" Binding="{Binding FullName}" IsReadOnly="True" Width="*"/>
+                        <DataGridTextColumn Header="Email" Binding="{Binding Email}" IsReadOnly="True" Width="*"/>
+                        <DataGridTextColumn Header="Date of Birth" Binding="{Binding Dob}" IsReadOnly="True" Width="*"/>
+                        <DataGridTextColumn Header="Address" Binding="{Binding Address}" IsReadOnly="True" Width="*"/>
+                        <DataGridTextColumn Header="Gender" Binding="{Binding Gender}" IsReadOnly="True" Width="*"/>
+                        <DataGridTextColumn Header="Password" Binding="{Binding Password}" IsReadOnly="True" Width="*"/>
+                        <DataGridTextColumn Header="Status" Binding="{Binding Status}" IsReadOnly="True" Width="*"/>
+                        <DataGridTemplateColumn Header="Operations" IsReadOnly="True" Width="auto">
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <StackPanel Orientation="Horizontal">
+                                        <Button Style="{StaticResource gridEditButton}">
+                                            <Icon:PackIconMaterial Kind="PencilOutline" Style="{StaticResource gridButtonIcon}"/>
+                                        </Button>
+                                        <Button Margin="5 0 0 0" Style="{StaticResource gridRemoveButton}">
+                                            <Icon:PackIconMaterial Kind="DeleteOutline" Style="{StaticResource gridButtonIcon}"/>
+                                        </Button>
+                                    </StackPanel>
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
+                    </DataGrid.Columns>
+                </DataGrid>
+
+                <!--Pagingation Section-->
+                <Border Grid.Row="6" HorizontalAlignment="Right" BorderBrush="#DEE4EC" BorderThickness="1" CornerRadius="5" Padding="5" Background="#ffffff" Margin="0 10 10 10">
+                    <StackPanel Orientation="Horizontal">
+                        <Button Style="{StaticResource pagingButton}">
+                            Pre
+                        </Button>
+                        <Rectangle Width="1" Fill="#DEE4EC" Margin="3 7"/>
+
+                        <Button Style="{StaticResource pagingButton}" Content="1" Background="#7950F2" Foreground="#ffffff"/>
+                        <Button Style="{StaticResource pagingButton}" Content="2"/>
+                        <TextBlock Text="..." Foreground="#6C7682" VerticalAlignment="Center" Margin="10 0" FontSize="15"/>
+                        <Button Style="{StaticResource pagingButton}" Content="3"/>
+                        <Rectangle Width="1" Fill="#DEE4EC" Margin="3 7"/>
+                        <Button Style="{StaticResource pagingButton}">
+                            Next
+                        </Button>
+                    </StackPanel>
+                </Border>
+
+            </Grid>
+
+            <Grid Grid.Column="2" Margin="30 20 20 20">
+                <StackPanel Orientation="Vertical">
+                    <TextBlock Text="Operations" FontSize="32" FontWeight="SemiBold" Margin="0 20 0 20" Foreground="#121518" HorizontalAlignment="Center"/>
+
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="300" />
+                        </Grid.ColumnDefinitions>
+
+                        <Label Grid.Row="0" Grid.Column="0" Content="ID:" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="5" FontSize="13" FontWeight="SemiBold" Foreground="#121518"/>
+                        <TextBox
+                            Name="txtId"
+                            DataContext="{Binding ElementName=DataGrid,    
+                            Path=SelectedItem}"
+                            Text="{Binding MemberId}"
+                            HorizontalAlignment="Left" Width="250" Grid.Row="0" Grid.Column="1" Margin="0,15,0,15"  Style="{StaticResource filterTextBox}" IsReadOnly="True"/>
+
+                        <Label Grid.Row="1" Grid.Column="0" Content="Name:" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="5" FontSize="13" FontWeight="SemiBold" Foreground="#121518"/>
+                        <TextBox
+                            Name="txtName"
+                            DataContext="{Binding ElementName=DataGrid,    
+                            Path=SelectedItem}"
+                            Text="{Binding FullName}"
+                            HorizontalAlignment="Left" Width="250" Grid.Row="1" Margin="78,0,0,15"  Style="{StaticResource filterTextBox}" Grid.ColumnSpan="2" VerticalAlignment="Bottom"/>
+
+                        <Label Grid.Row="2" Grid.Column="0" Content="Email:" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="5" FontSize="13" FontWeight="SemiBold" Foreground="#121518"/>
+                        <TextBox 
+                            Name="txtEmail"
+                            DataContext="{Binding ElementName=DataGrid,    
+                            Path=SelectedItem}"
+                            Text="{Binding Email}"
+                            HorizontalAlignment="Left" Width="250" Grid.Row="2" Grid.Column="1" Margin="0,15,0,15"  Style="{StaticResource filterTextBox}"/>
+
+                        <Label Grid.Row="3" Grid.Column="0" Content="DOB:" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="5" FontSize="13" FontWeight="SemiBold" Foreground="#121518"/>
+                        <DatePicker 
+                            Name="DOB"
+                            DataContext="{Binding ElementName=DataGrid,    
+                            Path=SelectedItem}"
+                            SelectedDate="{Binding Dob}"
+                            HorizontalAlignment="Left" Width="250" Grid.Row="3" Grid.Column="1" Margin="0,15,0,15" />
+
+                        <Label Grid.Row="4" Grid.Column="0" Content="Address:" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="5" FontSize="13" FontWeight="SemiBold" Foreground="#121518"/>
+                        <TextBox
+                            Name="txtAddress"
+                            DataContext="{Binding ElementName=DataGrid,    
+                            Path=SelectedItem}"
+                            Text="{Binding Address}"
+                            HorizontalAlignment="Left" Width="250" Grid.Row="4" Grid.Column="1" Margin="0,15,0,15"  Style="{StaticResource filterTextBox}"/>
+
+                        <Label Grid.Row="5" Grid.Column="0" Content="Gender:" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="5" FontSize="13" FontWeight="SemiBold" Foreground="#121518"/>
+                        <RadioButton
+                            DataContext="{Binding ElementName=DataGrid,    
+                            Path=SelectedItem}"
+                            Grid.Row="5" Grid.Column="1" Margin="20,10,0,0" Content="Male" GroupName="Gender" Name="Male">
+                            <RadioButton.Style>
+                                <Style TargetType="RadioButton">
+                                    <Style.Triggers>
+                                        <DataTrigger Binding="{Binding Status}" Value="True">
+                                            <Setter Property="IsChecked" Value="True"/>
+                                        </DataTrigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </RadioButton.Style>
+                        </RadioButton>
+                        <RadioButton
+                            DataContext="{Binding ElementName=DataGrid,    
+                            Path=SelectedItem}"
+                            Grid.Row="5" Grid.Column="1" Margin="150,10,0,0" GroupName="Gender" Content="Female" Name="Female">
+                            <RadioButton.Style>
+                                <Style TargetType="RadioButton">
+                                    <Style.Triggers>
+                                        <DataTrigger Binding="{Binding Status}" Value="False">
+                                            <Setter Property="IsChecked" Value="True"/>
+                                        </DataTrigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </RadioButton.Style>
+                        </RadioButton>
+
+
+                        <Label Grid.Row="6" Grid.Column="0" Content="Password:" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="5" FontSize="13" FontWeight="SemiBold"  Foreground="#121518"/>
+                        <TextBox
+                            Name="txtPassword"
+                            DataContext="{Binding ElementName=DataGrid,    
+                            Path=SelectedItem}"
+                            Text="{Binding Password}"
+                            HorizontalAlignment="Left" Width="250" Grid.Row="6" Grid.Column="1" Margin="0,15,0,15"  Style="{StaticResource filterTextBox}"/>
+
+                        <Label Grid.Row="7" Grid.Column="0" Content="Status:" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="5" FontSize="13" FontWeight="SemiBold"  Foreground="#121518"/>
+                        <CheckBox x:Name="cbStatus" 
+                                   DataContext="{Binding ElementName=DataGrid,    
+                                   Path=SelectedItem}"
+                                   IsChecked="{Binding Status}"
+                                   HorizontalAlignment="Left"  Grid.Row="7" Grid.Column="1" Margin="0,15,0,15"/>
+                    </Grid>
+
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0 10 0 0">
+                        <Button Style="{StaticResource addButton}" Content="Add" Width="60" Name="btnAdd" Click="btnAdd_Click" Margin="5"/>
+                        <Button Style="{StaticResource addButton}" Content="Update" Width="60" Name="btnUpdate" Click="btnUpdate_Click" Margin="5"/>
+                        <Button Style="{StaticResource addButton}" Content="Delete" Width="60" Name="btnDelete" Click="btnDelete_Click" Margin="5"/>
+                        <Button Style="{StaticResource addButton}" Content="Clear" Width="60" Name="btnClear" Click="btnClear_Click" Margin="5"/>
+                    </StackPanel>
+
+                </StackPanel>
+            </Grid>
+
+        </Grid>
+
+    </Border>
+</Window>
