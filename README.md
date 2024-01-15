@@ -7,13 +7,15 @@ Welcome to **WPF Project**, a web application that provides a seamless experienc
 
 1. [**Features**](#features)
 2. [**Usage**](#usage)
-   - [**Login**](#login)
-   - [**Register**](#register)
+
    - [**Product Page**](#product-page)
    - [**Member Page**](#member-page)
    - [**Order Page**](#order-page)
    - [**Order Detail**](#order-detail)
    - [**Profile**](#profile)
+   - [**Login**](#login)
+   - [**Register**](#register)
+
 
 ## Features
 
@@ -27,23 +29,7 @@ Welcome to **WPF Project**, a web application that provides a seamless experienc
 
 ## Usage
 
-### Login
-- Access the login page.
-- Enter your credentials.
-- Click the login button.
-- You will be redirected to the home page upon successful login.
-  ![Screenshot 2024-01-15 082524](https://github.com/dovandat1611/WPF-Project/assets/141027425/18de0fb8-1d19-4f6c-b08b-6d016a123964)
 
-### Register
-- Access the registration page.
-- Provide the required information.
-- Click the register button.
-- Once registered, you can log in using the created credentials.
-  ![Screenshot 2024-01-15 082630](https://github.com/dovandat1611/WPF-Project/assets/141027425/6fd9847f-9634-4c98-8a0c-c8e13023e189)
-
-### Profile
-- Update and manage your personal profile information.
-  ![Screenshot 2024-01-15 082813](https://github.com/dovandat1611/WPF-Project/assets/141027425/e00462e3-9c71-42bf-aba6-612abadda9fd)
 
 ### Product Page
 - Explore a variety of products listed on the product page.
@@ -63,4 +49,24 @@ Welcome to **WPF Project**, a web application that provides a seamless experienc
 ### Order Detail
 - Access the order detail page to view comprehensive information about your previous orders.
   ![Screenshot 2024-01-15 082755](https://github.com/dovandat1611/WPF-Project/assets/141027425/865be95b-7443-412e-9bf3-630258f746af)
+
+
+### Profile
+- Update and manage your personal profile information.
+  ![Screenshot 2024-01-15 082813](https://github.com/dovandat1611/WPF-Project/assets/141027425/e00462e3-9c71-42bf-aba6-612abadda9fd)
+
+### Login
+- Access the login page.
+- Enter your credentials.
+- Click the login button.
+- You will be redirected to the home page upon successful login.
+  ![Screenshot 2024-01-15 082524](https://github.com/dovandat1611/WPF-Project/assets/141027425/18de0fb8-1d19-4f6c-b08b-6d016a123964)
+
+### Register
+- Access the registration page.
+- Provide the required information.
+- Click the register button.
+- Once registered, you can log in using the created credentials.
+  ![Screenshot 2024-01-15 082630](https://github.com/dovandat1611/WPF-Project/assets/141027425/6fd9847f-9634-4c98-8a0c-c8e13023e189)
+
 
